@@ -14,7 +14,7 @@ namespace WinformToDo
         public DateTime DueDate { get; set; }
         public bool IsDone { get; set; }
 
-        public Todo(string description, DateTime date, bool doneState)
+        public Todo(string description, DateTime date, bool doneState = false)
         {
             ObjectCounter++;
             Id = ObjectCounter;
