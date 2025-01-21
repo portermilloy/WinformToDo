@@ -22,5 +22,10 @@ namespace WinformToDo
             DueDate = date;
             IsDone = doneState;
         }
+
+        public override string? ToString()
+        {
+            return $"{Id} - {DueDate} - {TaskDescription}";
+        }
     }
 }

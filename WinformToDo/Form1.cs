@@ -14,10 +14,12 @@ namespace WinformToDo
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //where we handle the add event
-            Todo myTodo = new Todo(txtTaskDescription.Text, new DateTime());
+            var date = DateTime.Parse(txtDueDate.Text);
 
-            MessageBox mb
+            //where we handle the add event
+            Todo myTodo = new Todo(txtTaskDescription.Text, date);
+
+            MessageBox.Show(myTodo.ToString());
 
 
         }
