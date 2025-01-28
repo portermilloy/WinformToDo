@@ -55,7 +55,6 @@
             gbTaskForm.TabIndex = 0;
             gbTaskForm.TabStop = false;
             gbTaskForm.Text = "Task Form";
-            gbTaskForm.Enter += groupBox1_Enter;
             // 
             // btnClear
             // 
@@ -65,6 +64,7 @@
             btnClear.TabIndex = 1;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // btnAdd
             // 
