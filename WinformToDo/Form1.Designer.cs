@@ -36,7 +36,7 @@
             lblTaskBoxLabel = new Label();
             txtTaskDescription = new TextBox();
             gbTaskList = new GroupBox();
-            lvTaskList = new ListView();
+            lbTaskList = new ListBox();
             gbTaskForm.SuspendLayout();
             gbTaskList.SuspendLayout();
             SuspendLayout();
@@ -74,7 +74,7 @@
             btnAdd.TabIndex = 2;
             btnAdd.Text = "Add ToDo";
             btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
+            btnAdd.Click += submitForm;
             // 
             // lblDueDate
             // 
@@ -92,6 +92,7 @@
             txtDueDate.PlaceholderText = "2025-01-20";
             txtDueDate.Size = new Size(310, 27);
             txtDueDate.TabIndex = 2;
+            txtDueDate.KeyPress += Form1_KeyPress;
             // 
             // lblTaskBoxLabel
             // 
@@ -108,10 +109,11 @@
             txtTaskDescription.Name = "txtTaskDescription";
             txtTaskDescription.Size = new Size(310, 27);
             txtTaskDescription.TabIndex = 1;
+            txtTaskDescription.KeyPress += Form1_KeyPress;
             // 
             // gbTaskList
             // 
-            gbTaskList.Controls.Add(lvTaskList);
+            gbTaskList.Controls.Add(lbTaskList);
             gbTaskList.Location = new Point(12, 157);
             gbTaskList.Name = "gbTaskList";
             gbTaskList.Size = new Size(414, 523);
@@ -119,13 +121,13 @@
             gbTaskList.TabStop = false;
             gbTaskList.Text = "Task List";
             // 
-            // lvTaskList
+            // lbTaskList
             // 
-            lvTaskList.Location = new Point(6, 32);
-            lvTaskList.Name = "lvTaskList";
-            lvTaskList.Size = new Size(402, 491);
-            lvTaskList.TabIndex = 0;
-            lvTaskList.UseCompatibleStateImageBehavior = false;
+            lbTaskList.FormattingEnabled = true;
+            lbTaskList.Location = new Point(6, 20);
+            lbTaskList.Name = "lbTaskList";
+            lbTaskList.Size = new Size(402, 504);
+            lbTaskList.TabIndex = 0;
             // 
             // Form1
             // 
@@ -152,6 +154,6 @@
         private Label lblDueDate;
         private TextBox txtDueDate;
         private GroupBox gbTaskList;
-        private ListView lvTaskList;
+        private ListBox lbTaskList;
     }
 }
