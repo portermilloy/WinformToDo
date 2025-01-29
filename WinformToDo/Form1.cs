@@ -2,9 +2,12 @@ namespace WinformToDo
 {
     public partial class Form1 : Form
     {
+        private List<Todo> TaskList { get; set; }
+
         public Form1()
         {
             InitializeComponent();
+            TaskList = new List<Todo>();
         }
 
 
@@ -40,13 +43,29 @@ namespace WinformToDo
 
 
 
+            TaskList.Add(myTodo);
 
-
-            lbTaskList.Items.Add(myTodo.ToString());
+            UpdateListBox();
 
 
             ClearForm();
 
+        }
+
+        public void UpdateListBox()
+        {
+            lbTaskList.Items.Clear();
+
+            var list = TaskList
+                .Where(t => t.IsDone == false)
+                .OrderBy(t => t.DueDate)
+                .ToList();
+
+
+            for (int i =0; i < list.Count; i++)
+            {
+                lbTaskList.Items.Add(list[i].ToString());
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
