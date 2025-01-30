@@ -20,13 +20,13 @@ namespace WinformToDo
                 return;
             }
 
-            if(Validators.IsTextNull(txtTaskDescription))
+            if (Validators.IsTextNull(txtTaskDescription))
             {
                 MessageBox.Show("Description needs to be created.");
                 return;
             }
-            
-            if(Validators.IsEmptyText(txtDueDate))
+
+            if (Validators.IsEmptyText(txtDueDate))
             {
                 MessageBox.Show("Missing a due date.");
                 return;
@@ -57,12 +57,12 @@ namespace WinformToDo
             lbTaskList.Items.Clear();
 
             var list = TaskList
-                .Where(t => t.IsDone == false)
+                //.Where(t => t.IsDone == false)
                 .OrderBy(t => t.DueDate)
                 .ToList();
 
 
-            for (int i =0; i < list.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
                 lbTaskList.Items.Add(list[i].ToString());
             }
@@ -86,6 +86,38 @@ namespace WinformToDo
             if (e.KeyChar == 13)
             {
                 submitForm(sender, e);
+            }
+        }
+
+        private void lbTaskList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show($"Selected Index is: {lbTaskList.SelectedIndex}");
+
+            int selectedIndex = lbTaskList.SelectedIndex;
+            string selectedItem = (string)lbTaskList.SelectedItem;
+
+            if (selectedIndex == -1)
+            {
+                return;
+            }
+
+
+            if (selectedItem == null)
+            {
+                MessageBox.Show("No item selected at the index.");
+                return;
+            }
+
+
+            int id = Int32.Parse(selectedItem.Split(" - ")[0]);
+
+            var todo = TaskList.Find(t => t.Id == id);
+
+            if (todo != null)
+            {
+                todo.IsDone = !todo.IsDone;
+
+                UpdateListBox();
             }
         }
     }

@@ -124,10 +124,11 @@
             // lbTaskList
             // 
             lbTaskList.FormattingEnabled = true;
-            lbTaskList.Location = new Point(6, 20);
+            lbTaskList.Location = new Point(0, 26);
             lbTaskList.Name = "lbTaskList";
             lbTaskList.Size = new Size(402, 504);
             lbTaskList.TabIndex = 0;
+            lbTaskList.SelectedIndexChanged += lbTaskList_SelectedIndexChanged;
             // 
             // Form1
             // 
