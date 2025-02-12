@@ -44,6 +44,7 @@ namespace WinformToDo
 
 
             TaskList.Add(myTodo);
+            fpTasks.Controls.Add(new TaskControl(myTodo));
 
             UpdateListBox();
 
@@ -54,7 +55,7 @@ namespace WinformToDo
 
         public void UpdateListBox()
         {
-            lbTaskList.Items.Clear();
+            //lbTaskList.Items.Clear();
 
             var list = TaskList
                 //.Where(t => t.IsDone == false)
@@ -64,7 +65,7 @@ namespace WinformToDo
 
             for (int i = 0; i < list.Count; i++)
             {
-                lbTaskList.Items.Add(list[i].ToString());
+                //lbTaskList.Items.Add(list[i].ToString());
             }
         }
 
@@ -89,36 +90,36 @@ namespace WinformToDo
             }
         }
 
-        private void lbTaskList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //MessageBox.Show($"Selected Index is: {lbTaskList.SelectedIndex}");
+        //private void lbTaskList_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    //MessageBox.Show($"Selected Index is: {lbTaskList.SelectedIndex}");
 
-            int selectedIndex = lbTaskList.SelectedIndex;
-            string selectedItem = (string)lbTaskList.SelectedItem;
+        //    //int selectedIndex = lbTaskList.SelectedIndex;
+        //    //string selectedItem = (string)lbTaskList.SelectedItem;
 
-            if (selectedIndex == -1)
-            {
-                return;
-            }
-
-
-            if (selectedItem == null)
-            {
-                MessageBox.Show("No item selected at the index.");
-                return;
-            }
+        //    if (selectedIndex == -1)
+        //    {
+        //        return;
+        //    }
 
 
-            int id = Int32.Parse(selectedItem.Split(" - ")[0]);
+        //    if (selectedItem == null)
+        //    {
+        //        MessageBox.Show("No item selected at the index.");
+        //        return;
+        //    }
 
-            var todo = TaskList.Find(t => t.Id == id);
 
-            if (todo != null)
-            {
-                todo.IsDone = !todo.IsDone;
+        //    int id = Int32.Parse(selectedItem.Split(" - ")[0]);
 
-                UpdateListBox();
-            }
-        }
+        //    var todo = TaskList.Find(t => t.Id == id);
+
+        //    if (todo != null)
+        //    {
+        //        todo.IsDone = !todo.IsDone;
+
+        //        UpdateListBox();
+        //    }
+        //}
     }
 }
